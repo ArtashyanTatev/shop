@@ -81,3 +81,37 @@ $(document).on('submit', ".formImage", function (form) {
     });
 });
 
+
+
+
+//=============================  DELETE ========================//
+
+$(document).on('click', '.iconDelete', function () {
+    parent = $(this).data('status');
+    url = $('[data-target="' + parent + '"]').data('href_delete');
+    prod = $('[data-target="' + parent + '"]').data('prod');
+    key = $('[data-target="' + parent + '"]').data('key');
+    data = {prod: prod, key: key, _token: token};
+});
+
+$(document).on('click', '.modalDelete', function () {
+    $.ajax({
+        url: url,
+        type: 'post',
+        data: data,
+        success: function (data) {
+            if (data == 1) {
+                $('[data-target="' + parent + '"]').fadeOut(500, function () {
+                    $(this).remove();
+                })
+            } else {
+                $(".msj-success").html(data);
+                $(".msj-success").fadeIn();
+                setTimeout(function () {
+                    $(".msj-success").fadeOut();
+                    $(".msj-success").html('<ul></ul>');
+                }, 5000);
+            }
+        }
+    })
+});
