@@ -54,7 +54,7 @@
                         <td>{{$sld->translate('en')->description}}</td>
 
                         <td>
-                            <button class="btn  btn-primary iconUpdate" data-toggle="modal" data-status="sld_{{$i}}"
+                            <button class="btn btn-primary iconUpdate" data-toggle="modal" data-status="sld_{{$i}}"
                                     data-target="#modalUpdate">
                                 <i class="fa fa-edit"></i>
                                 Edit

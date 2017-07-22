@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Slider;
 
@@ -65,8 +66,56 @@ class AdminController extends Controller
     }
 
     public function updateSlider(Request $request){
-dd(1);
+
+//        dd($request->all());
+        if ($request->key && $request->key == 'one') {
+            $product = Slider::where('id', $request->prod)->first();
+            return View::make('vendor.adminlte.update.headerSliderUpdate', [
+                'product' => $product,
+            ]);
+        } else {
+
+            $validator = Validator::make($request->all(), [
+                'image' => 'required',
+
+            ]);
+            if ($validator->fails()) {
+                return back()->with('error', 'add')->withErrors($validator->errors())->withInput();
+            }
+
+
+            $product = Slider::where('id', $request->id)->firstOrFail();
+
+            if ($request->image) {
+                $data = $_POST['image'];
+                list($type, $data) = explode(';', $data);
+                list(, $data) = explode(',', $data);
+
+                $data = base64_decode($data);
+                $imageName = time() . '.jpg';
+                file_put_contents('image/slider/' . $imageName, $data);
+            }
+
+            $product->image = $imageName;
+
+            $product->translate('ru')->header = $request->ru_header;
+            $product->translate('hy')->header = $request->hy_header;
+            $product->translate('en')->header = $request->en_header;
+
+            $product->translate('ru')->title = $request->ru_title;
+            $product->translate('en')->title = $request->en_title;
+            $product->translate('hy')->title = $request->hy_title;
+
+            $product->translate('ru')->description = $request->ru_description;
+            $product->translate('en')->description = $request->en_description;
+            $product->translate('hy')->description = $request->hy_description;
+
+
+            return back();
+        }
     }
+
+
 
     public function deleteSlider(Request $request){
 dd(2);

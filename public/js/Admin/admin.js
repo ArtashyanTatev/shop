@@ -24,7 +24,6 @@ $(document).on('click', '.iconUpdate', function () {
         success: function (data) {
             if (data != 0) {
                 $('.updateForm').html(data);
-                $('.sort, #sortable').sortable();
             }
             else {
                 $(".msj-success").html(data);
