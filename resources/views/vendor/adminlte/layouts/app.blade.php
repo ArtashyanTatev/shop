@@ -67,7 +67,7 @@ desired effect
         @include('vendor.adminlte.modal.modalUpdate')
                 @include('vendor.adminlte.modal.modalDelete')
 
-        @include('adminlte::layouts.partials.controlsidebar')
+{{--        @include('adminlte::layouts.partials.controlsidebar')--}}
 
         @include('adminlte::layouts.partials.footer')
 

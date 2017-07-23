@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Models\Slider;
 
 /**
  * Class HomeController
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -33,6 +34,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('adminlte::home');
+
+        $slader_images = Slider::get();
+
+        return view('home',[
+            'slader_images' =>  $slader_images
+        ]);
     }
 }

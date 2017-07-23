@@ -17,9 +17,10 @@ Route::group(
     ],
     function()
     {
-        Route::get('/', function () {
-            return view('home');
-        });
+        Route::get('/', 'HomeController@index')->name('home');
+//        function () {
+//            return view('home');
+//        });
 
         Route::get('/mylog', function () {
             return view('login');

@@ -92,16 +92,16 @@
                 $uploadCrop = $(".upload-demo2").croppie({
             enableExif: true,
             viewport: {
-                width: 500,
-                height: 100
+                width: 400,
+                height: 200
             },
             boundary: {
-                width: 600,
-                height: 120
+                width: 500,
+                height: 230
             }
         });
 
-        w = 2000;
+        w = 800;
         h = 400;
     </script>
 

@@ -3,28 +3,32 @@
 @section('content')
 
     <div class="container">
-        <h2>Carousel Example</h2>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+        <div id="myCarousel" class="carousel slide mg_40" data-ride="carousel">
             <!-- Indicators -->
+            @php($i = 0)
+
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
+
+                @foreach($slader_images as $img)
+                    <li data-target="#myCarousel" data-slide-to="{{$i}}"
+                        class={{$i == 0 ? "active" : ""}}>
+                    </li>
+                    @php($i++)
+                @endforeach
+
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <img src="la.jpg" alt="Los Angeles" style="width:100%;">
-                </div>
+                @php($i = 0)
+                @foreach($slader_images as $img)
+                    <div class="item {{$i == 0 ? "active" : ""}} ">
+                        <img src="{{asset( 'image/slider/' . $img->image)}}" alt="Los Angeles" style="width:100%;">
+                    </div>
+                    @php($i++)
+                @endforeach
 
-                <div class="item">
-                    <img src="chicago.jpg" alt="Chicago" style="width:100%;">
-                </div>
-
-                <div class="item">
-                    <img src="ny.jpg" alt="New york" style="width:100%;">
-                </div>
             </div>
 
             <!-- Left and right controls -->
