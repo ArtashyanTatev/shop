@@ -36,9 +36,9 @@
                 @foreach($slider_info as $sld)
                     <tr
                             data-target="sld_{{$i}}"
-                            data-href_update="{{route('updateSlider')}}"
                             data-prod="{{$sld->id}}"
-                            data-href_delete="{{route('deleteSlider')}}"
+                            data-href_update="{{route('updateSlider', ['id' => $sld->id])}}"
+                            data-href_delete="{{route('deleteSlider', ['id' => $sld->id])}}"
                     >
 
                         <td>
@@ -54,11 +54,14 @@
                         <td>{{$sld->translate('en')->description}}</td>
 
                         <td>
-                            <button class="btn btn-primary iconUpdate" data-toggle="modal" data-status="sld_{{$i}}"
+                            <button class="btn  btn-primary iconUpdate" type="button" data-toggle="modal" data-status="sld_{{$i}}"
                                     data-target="#modalUpdate">
                                 <i class="fa fa-edit"></i>
                                 Edit
                             </button>
+
+
+
                             <button class="btn  btn-danger iconDelete" data-toggle="modal" data-status="sld_{{$i}}"
                                     data-target="#modalDelete">
                                 <i class="fa fa-trash"></i>
@@ -101,4 +104,7 @@
         w = 2000;
         h = 400;
     </script>
+
+
+
 @endsection

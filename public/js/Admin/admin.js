@@ -86,10 +86,11 @@ $(document).on('submit', ".formImage", function (form) {
 //=============================  DELETE ========================//
 
 $(document).on('click', '.iconDelete', function () {
+
     parent = $(this).data('status');
     url = $('[data-target="' + parent + '"]').data('href_delete');
     prod = $('[data-target="' + parent + '"]').data('prod');
-    key = $('[data-target="' + parent + '"]').data('key');
+    key = 'delete';
     data = {prod: prod, key: key, _token: token};
 });
 

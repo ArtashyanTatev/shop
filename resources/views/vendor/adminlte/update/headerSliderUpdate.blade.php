@@ -1,6 +1,18 @@
-    <div class="modal-header" style="z-index: 9999999999999">
+{{--<div class="modal-header" >--}}
+{{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+{{--</div>--}}
+
+
+{{--<div id="" class="modal fade" role="dialog">--}}
+{{--<div class="modal-dialog">--}}
+
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
+
+
     <div class="modal-body">
         <div class="box-header with-border text-center">
             <h3 class="box-title">Edit Slide</h3>
@@ -31,21 +43,21 @@
                             <div class="form-group text-center">
                                 <label>Հայերեն</label>
                                 <input type="text" name="hy_header" class="form-control" placeholder="Հայերեն"
-                                       value="{{$product->translate('hy')->header}}" required>
+                                       value="{{$product->translate('hy')->header}}" >
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group text-center">
                                 <label>English</label>
                                 <input type="text" name="en_header" class="form-control" placeholder="English"
-                                       value="{{$product->translate('en')->header}}" required>
+                                       value="{{$product->translate('en')->header}}" >
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group text-center">
                                 <label>Русский</label>
                                 <input type="text" name="ru_header" class="form-control" placeholder="Русский"
-                                       value="{{$product->translate('ru')->header}}" required>
+                                       value="{{$product->translate('ru')->header}}" >
                             </div>
                         </div>
                     </div> <!--name-->
@@ -106,22 +118,6 @@
                     <!--about emploee-->
 
                     <!--social-->
-                    <div class="row">
-                        <h3>Social Links</h3>
-                        <div class="row">
-                            <label col-sm-2> <a data-tooltip="tooltip" data-placement="top" href="#"> <i
-                                            class="fa fa-facebook"></i> </a></label>
-                            <div class="col-sm-10"><input type="text" name="facebook" class="form-control"
-                                                          id="href" value="{{$product->employee_social->facebook}}"></div>
-                        </div>
-                        <div class="row">
-                            <label col-sm-2> <a data-tooltip="tooltip" data-placement="top" href="#"> <i
-                                            class="fa fa-google-plus"></i> </a></label>
-                            <div class="col-sm-10"><input type="text" name="google" class="form-control"
-                                                          value="{{$product->employee_social->google}}" id="href"></div>
-                        </div>
-
-
 
                     <div class="row">
                         <div class="col-sm-12">
@@ -137,8 +133,10 @@
         </div>
     </div>
 
+
+</div>
 <script>
-    $uploadCrop = $(".upload-demo2").croppie({
+    $uploadCrop = $(".upload-demo1").croppie({
         enableExif: true,
         viewport: {
             width: 200,

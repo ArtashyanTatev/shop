@@ -45,12 +45,27 @@ desired effect
         <!-- Main content -->
             <section class="content">
                 <!-- Your Page Content Here -->
+                @if(isset($errors) && count($errors) > 0 )
+                    <div class="info_modal alert">
+                        <div class="alert-danger alert-dismissable fade in alert_fixed">
+                            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>
+                                        {{$error}}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+
                 @yield('main-content')
             </section><!-- /.content -->
         </div><!-- /.content-wrapper -->
 
         @include('vendor.adminlte.modal.modalUpdate')
-        {{--        @include('vendor.adminlte.modal.modalDelete')--}}
+                @include('vendor.adminlte.modal.modalDelete')
 
         @include('adminlte::layouts.partials.controlsidebar')
 

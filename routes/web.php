@@ -30,8 +30,8 @@ Route::group(
 
         Route::get('headerSlider', 'Admin\AdminController@headerSlider')->name('headerSlider');
         Route::post('create_slide', 'Admin\AdminController@create_slide')->name('create_slide');
-        Route::post('updateSlider/{sld?}', 'Admin\AdminController@updateSlider')->name('updateSlider');
-        Route::post('deleteSlider', 'Admin\AdminController@deleteSlider')->name('deleteSlider');
+        Route::post('updateSlider/{sld}', 'Admin\AdminController@updateSlider')->name('updateSlider');
+        Route::post('deleteSlider/{sld}', 'Admin\AdminController@deleteSlider')->name('deleteSlider');
     });
 
 

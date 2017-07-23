@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Slider;
 
@@ -14,7 +15,7 @@ class AdminController extends Controller
     {
         $slider_info = Slider::get();
 
-        return view('adminlte::headerSlider',[
+        return view('adminlte::headerSlider', [
             'slider_info' => $slider_info,
         ]);
     }
@@ -61,13 +62,25 @@ class AdminController extends Controller
             ],
         ]);
 
-            return back();
+        return back();
 
     }
 
-    public function updateSlider(Request $request){
+    public function deleteSlider(Request $request)
+    {
+        if ($request->key && $request->key == 'delete') {
+            $res = Slider::where('id', $request->prod)->firstOrFail();
+            if (file_exists(public_path() . '/image/slider/' . $res->image)) {
+                File::delete(public_path() . '/image/slider/' . $res->image);
+                $res->delete();
+                return 1;
 
-//        dd($request->all());
+            }
+        }
+    }
+
+    public function updateSlider(Request $request)
+    {
         if ($request->key && $request->key == 'one') {
             $product = Slider::where('id', $request->prod)->first();
             return View::make('vendor.adminlte.update.headerSliderUpdate', [
@@ -83,8 +96,7 @@ class AdminController extends Controller
                 return back()->with('error', 'add')->withErrors($validator->errors())->withInput();
             }
 
-
-            $product = Slider::where('id', $request->id)->firstOrFail();
+            $product = Slider::where('id', 13)->firstOrFail();
 
             if ($request->image) {
                 $data = $_POST['image'];
@@ -101,23 +113,17 @@ class AdminController extends Controller
             $product->translate('ru')->header = $request->ru_header;
             $product->translate('hy')->header = $request->hy_header;
             $product->translate('en')->header = $request->en_header;
-
             $product->translate('ru')->title = $request->ru_title;
             $product->translate('en')->title = $request->en_title;
             $product->translate('hy')->title = $request->hy_title;
-
             $product->translate('ru')->description = $request->ru_description;
             $product->translate('en')->description = $request->en_description;
             $product->translate('hy')->description = $request->hy_description;
 
-
+            $product->save();
             return back();
         }
     }
 
 
-
-    public function deleteSlider(Request $request){
-dd(2);
-    }
 }
