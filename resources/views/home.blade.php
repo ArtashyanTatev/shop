@@ -26,6 +26,11 @@
                     <div class="item {{$i == 0 ? "active" : ""}} ">
                         <img src="{{asset( 'image/slider/' . $img->image)}}" alt="Los Angeles" style="width:100%;">
                     </div>
+                    <div class="carousel-caption">
+                        <h1>{{$img->title}}</h1>
+                        <h4>{{$img->header}}</h4>
+                        <p>{{$img->description}}</p>
+                    </div>
                     @php($i++)
                 @endforeach
 
