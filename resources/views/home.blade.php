@@ -27,9 +27,9 @@
                         <img src="{{asset( 'image/slider/' . $img->image)}}" alt="Los Angeles" style="width:100%;">
                     </div>
                     <div class="carousel-caption">
-                        <h1>{{$img->title}}</h1>
-                        <h4>{{$img->header}}</h4>
-                        <p>{{$img->description}}</p>
+                        <h1>{{$img->translate(session('locale'))->title}}</h1>
+                        <h4>{{$img->translate(session('locale'))->header}}</h4>
+                        <p>{{$img->translate(session('locale'))->description}}</p>
                     </div>
                     @php($i++)
                 @endforeach
